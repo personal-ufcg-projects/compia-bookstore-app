@@ -1,0 +1,12 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # URL da API — aponta para onde o compia-bookstore-api está rodando
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:3333}
+    container_name: compia_frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
